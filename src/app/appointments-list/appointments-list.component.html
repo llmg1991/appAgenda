@@ -1,0 +1,44 @@
+
+
+
+  <div class="appointmentContainer">
+    <div class="d-flex  flex-wrap justify-content-around ">
+      <div *ngFor="let appoint of arrayAppointments" >
+        <div class="card border-{{appoint.importance.color}} cardContainer m-3">
+          <div class="card-header bg-{{appoint.importance.color}} h2 white d-flex justify-content-between">
+            <div>
+              {{appoint.title}}
+            </div>
+            <div>
+              <button class="m-1" mat-mini-fab (click)="editAppointment(appoint)" mat-fab color="primary" aria-label="edit" >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="m-1" mat-mini-fab (click)="deleteAppointment(appoint)" mat-fab color="primary" aria-label="delete" >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>         
+            
+            
+          </div>
+
+          <div class="card-body text-{{appoint.importance.color}}">
+            <div *ngIf="(appoint.startDate.getDay() == appoint.endDate.getDay()) && (appoint.startDate.getMonth() == appoint.endDate.getMonth()) && (appoint.startDate.getFullYear()== appoint.endDate.getFullYear()); else elseBlock">
+                  <h5 class="card-title"> Day: <b>{{appoint.startDate | date: 'dd/MM/yyyy'}}.</b> From <b>{{appoint.startDate | date: 'shortTime'}}</b> to <b>{{appoint.endDate | date: 'shortTime'}}</b> </h5>
+            </div>
+            <ng-template #elseBlock>
+                  <h5 class="card-title"> From: <b>{{appoint.startDate | date: 'dd/MM/yyyy'}} {{appoint.startDate | date: 'shortTime'}} </b>   to <b> {{appoint.endDate | date: 'dd/MM/yyyy'}} |  {{appoint.endDate | date: 'shortTime'}} </b></h5>
+            </ng-template>
+            <div class="descText">
+              <p class="card-text overflow-auto">{{ (appoint.description.length>350)? (appoint.description | slice:0:350)+' ...':(appoint.description) }}</p>
+            </div>
+            <div *ngIf="(appoint.description.length>350)">
+              <button class="btn btn-lg btn-outline-primary" (click)="openDialog(appoint)" >Read More</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

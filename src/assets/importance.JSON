@@ -1,0 +1,12 @@
+[{
+  "importanceValue": 1,
+  "importanceText": "Low"
+},
+{
+  "importanceValue": 2,
+  "importanceText": "Medium"
+},
+{
+  "importanceValue": 3,
+  "importanceText": "Critical"
+}]

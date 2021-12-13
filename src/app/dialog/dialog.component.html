@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">{{data.appoint.title}}</h2>
+
+  </div>
+  <div class="modal-body">
+    From: {{data.appoint.startDate | date: 'dd/MM/yyyy'}} {{data.appoint.startDate | date: 'shortTime'}} 
+    <br>
+    To:  {{data.appoint.endDate | date: 'dd/MM/yyyy'}} |  {{data.appoint.endDate | date: 'shortTime'}}
+
+  </div>
+  <div class=" modal-footer textContainerDialog">
+    {{data.appoint.description}}
+  </div>
+  <div class="modal-footer">
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Close</button>
+      <button mat-button [mat-dialog-close]="true" (click)="editAppoint(data.appoint)"  >
+        Edit
+      </button>
+      
+    </mat-dialog-actions>
+  </div>
+    
+    
+

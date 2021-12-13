@@ -1,0 +1,7 @@
+.textContainerDialog{
+    overflow-y: auto;
+    
+    overflow-x: hidden;
+    height: 250px;
+    background-color: greenyellow;
+}

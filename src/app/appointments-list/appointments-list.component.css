@@ -1,0 +1,16 @@
+
+  .descText{
+    height: 15em;
+    overflow: auto;  
+  }
+
+  .appointmentContainer{
+      width: 100%;
+      height: 100%;
+     
+  }
+  .cardContainer{
+    max-width: 300px;
+    height: 25rem;
+  }
+  

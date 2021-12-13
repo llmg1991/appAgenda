@@ -1,0 +1,85 @@
+
+<div class="d-flex flex-row">
+
+  <div class="mt-3">
+    <div class="card border-primary mb-3">
+      <div class="card-header text-capitalize font-weight-bold text-xl-left text-xl-left text-primary h2" *ngIf="_edittingAppointment == false; else editTextTitle">insert details:</div>
+      <ng-template #editTextTitle><div class="card-header text-capitalize font-weight-bold text-xl-left text-xl-left text-primary h2">edit details:</div></ng-template>
+      <div class="card-body text-primary">
+
+          <form #form="ngForm" (ngSubmit)="submitForm(form); " ngNativeValidate   >
+          
+                  
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <input type="text" id="title" name="title" class="form-control" rows="3" [(ngModel)]="appointment.title" placeholder="Title:" required>
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <div *ngFor="let importance of importanceList" class="custom-control custom-radio">
+              <input type="radio"  class="custom-control-input" [id]='importance.ImportanceName' name="importance" [value]='importance' [(ngModel)]="appointment.importance" required>
+              <label class="custom-control-label" [for]='importance.ImportanceName'>{{ importance.ImportanceName }}</label>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <input  type="daterange"
+                      name="rangeDate"
+                      id="rangeDate"
+                      placeholder="Select the days:"
+                      class="form-control"
+                      [(ngModel)]="_rangeDate"
+                      placement="right"
+                      [bsConfig]="{  rangeInputFormat : 'DD/MM/YYYY', showWeekNumbers: false , isAnimated: true, adaptivePosition: true, containerClass:'theme-blue'  }"
+                      required
+                      bsDaterangepicker>
+            </div>
+          </div>
+
+
+
+          <div class="form-group d-flex flex-row d-flex justify-content-between text-center">
+            <div>
+              <label for="From:">From:</label>
+              <ngb-timepicker [(ngModel)]="_iniHour"  name="From" id="Form" [minuteStep]="5" ></ngb-timepicker>
+            </div>
+            <div>
+              <label for="To:">To:</label>
+              <ngb-timepicker [(ngModel)]="_endHour" name="To" id="To" [minuteStep]="5"></ngb-timepicker>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <textarea  id="notes" name="description" class="form-control" rows="3" [(ngModel)]="appointment.description" placeholder="Description"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div *ngIf="_edittingAppointment == false; else editText">
+              <button class="btn btn-primary w-100">ADD</button>
+            </div>
+            <ng-template #editText>
+              <button class="btn btn-secondary w-100 ">Save</button>
+            </ng-template>
+          </div>
+
+        </form>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+<br>
